@@ -12,7 +12,7 @@ INCLUDE_FLAGS=-I$(OPENCV_DIR)/include
 CFLAGS=-c -Wall $(INCLUDE_FLAGS)
 LDFLAGS= -L$(OPENCV_DIR)/lib -lopencv_core -lopencv_highgui -lopencv_imgproc
 
-SOURCES=main.cpp
+SOURCES=main.cpp Util.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=sudoku
 
