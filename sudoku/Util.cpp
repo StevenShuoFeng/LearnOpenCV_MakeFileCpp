@@ -31,17 +31,17 @@ Point findBoardCenter(Mat imDilate)
     int max=-1;
 
 
-    for(int y=0;y<imDilate.size().height;y++)
+    for(int y = 0; y < imDilate.size().height; y++)
     {
         uchar *row = imDilate.ptr(y);
-        for(int x=0;x<imDilate.size().width;x++)
+        for(int x = 0; x < imDilate.size().width; x++)
         {
             if(row[x]>=128)
             {
 
                  int area = floodFill(imDilate, Point(x,y), CV_RGB(0,0,64));
 
-                 if(area>max)
+                 if(area > max)
                  {
                     center = Point(x,y);
                     max = area;
@@ -56,17 +56,34 @@ Point findBoardCenter(Mat imDilate)
 
 void takeOutBoard(Mat& imDilate, Point center)
 {	
-	for(int y=0;y<imDilate.size().height;y++)
+	for(int y = 0; y < imDilate.size().height; y++)
     {
         uchar *row = imDilate.ptr(y);
-        for(int x=0;x<imDilate.size().width;x++)
+        for(int x = 0; x < imDilate.size().width; x++)
         {
             if(row[x]==64 && x!=center.x && y!=center.y)
             {
-                int area = floodFill(imDilate, Point(x,y), CV_RGB(0,0,0));
+                floodFill(imDilate, Point(x,y), CV_RGB(0,0,0));
             }
         }
     }
+}
+
+void drawLine(Vec2f line, Mat &img, Scalar rgb)
+{
+    if(line[1]!=0)
+    {
+        float m = -1/tan(line[1]);
+
+        float c = line[0]/sin(line[1]);
+
+        cv::line(img, Point(0, c), Point(img.size().width, m*img.size().width+c), rgb);
+    }
+    else
+    {
+        cv::line(img, Point(line[0], 0), Point(line[0], img.size().height), rgb);
+    }
+
 }
 
 
