@@ -7,7 +7,6 @@
 // http://aishack.in/tutorials/sudoku-grabber-opencv-detection/
 
 using namespace cv;
-// using namespace std;
 
 int main(int argc, char **argv)
 {

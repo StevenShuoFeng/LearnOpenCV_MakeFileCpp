@@ -5,10 +5,10 @@ ARCH=-arch x86_64
 # export DYLD_LIBRARY_PATH="/usr/local/Cellar/opencv/2.4.12_2/lib/" # make sure this is setup
 
 OPENCV_DIR=/usr/local/Cellar/opencv/2.4.12_2
-INCLUDE_DIR=$(OPENCV_DIR)/include
+INC_DIR=$(OPENCV_DIR)/include
 LIB_DIR=$(OPENCV_DIR)/lib
 
-CFLAGS=-c -Wall -I$(INCLUDE_DIR) -Wno-overloaded-virtual
+CFLAGS=-c -I$(INC_DIR) -Wall -Wno-overloaded-virtual
 LDFLAGS= -L$(LIB_DIR) -lopencv_core -lopencv_highgui -lopencv_imgproc
 
 SOURCES=main.cpp Util.cpp
