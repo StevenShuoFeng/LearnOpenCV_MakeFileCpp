@@ -1,3 +1,11 @@
+# Example for compiling and running a program using OpenCV on Mac OS X 10.6.
+
+# See post: http://asmaloney.com/2013/01/code/compiling-opencv-on-mac-os-x-10-6
+
+# 24 Jan 2013
+# Andy Maloney
+# http://asmaloney.com
+
 CC=g++
 ARCH=-arch x86_64
 
